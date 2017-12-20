@@ -90,7 +90,7 @@ namespace TagCloudMakerCUI
 
         public IEnumerable<string> GetUnsetParamtersNames()
         {
-            var properties = GetType().GetProperties();
+            var properties = GetType().GetProperties().Where(p => p.Name != "ExcludingFilePath");
             foreach (var property in properties)
             {
                 if (property.GetValue(this) == null)
